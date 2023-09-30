@@ -17,7 +17,7 @@ object FromRasaEvents {
 
             val events = RasaEventConverter.loadEvents(eventsAsString)
 
-            dialogs.add(buildConversation(events))
+            dialogs.add(buildConversationFromEvents(events))
 
         }
 
@@ -26,13 +26,13 @@ object FromRasaEvents {
     }
 
 
-    fun buildConversations(eventGroups: List<List<ConvertibleEvent>>): List<Conversation> {
+    fun buildConversationsFromEvents(eventGroups: List<List<ConvertibleEvent>>): List<Conversation> {
 
         val dialogs = mutableListOf<Conversation>()
 
         for (events in eventGroups) {
 
-            dialogs.add(buildConversation(events))
+            dialogs.add(buildConversationFromEvents(events))
 
         }
 
@@ -44,11 +44,11 @@ object FromRasaEvents {
 
         val rasaEvents = RasaEventConverter.loadEvents(rasaEventsAsStrings)
 
-        return buildConversation(rasaEvents)
+        return buildConversationFromEvents(rasaEvents)
 
     }
 
-    fun buildConversation(rasaEvents: List<ConvertibleEvent>): Conversation {
+    fun buildConversationFromEvents(rasaEvents: List<ConvertibleEvent>): Conversation {
 
         val id = extractConversationId(rasaEvents)
 
